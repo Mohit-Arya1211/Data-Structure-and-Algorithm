@@ -8,13 +8,17 @@ void swap1(int *a, int *b){
 }
 
 void bubbleSort(int A[], int n){
-    int i, j;
+    int i, j, flag=0;
     for(i = 0; i<n-1; i++){
+        flag = 0;
         for(j = 0; j<n-1-i; j++){
             if(A[j] > A[j+1]){
                 swap1(&A[j], &A[j+1]);
+                flag++;
             }
         }
+        if(flag == 0)
+            break;
     }
 }
 
