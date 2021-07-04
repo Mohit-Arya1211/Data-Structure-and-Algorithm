@@ -5,11 +5,9 @@ class Node{
     public:
     int data;
     Node *next;
-
-
     Node(int data){
         this -> data = data;
-        next = NULL;
+        this -> next = NULL;
     }
 };
 
@@ -17,15 +15,37 @@ void print(Node *head){
     Node *temp = head;
     while(temp != NULL){
         cout<< temp -> data;
-        head = temp -> next;
+        temp = temp -> next;
         if(temp != NULL)
             cout<<" -> ";
     }
 }
 
+Node* userInput(){
+    int data;
+    cin>>data;
+    Node *head = NULL;
+    while(data != -1){
+        Node *newNode = new Node(data);
+        if(head == NULL){
+            head = newNode;
+        }
+        else{
+            Node *temp = head;
+            while(temp -> next != NULL){
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+        cin>>data;
+    }
+    return head;
+}
+
 int main()
 {
-     //Statical Creation:
+ // Manual Creation:
+    //Statical Creation:
     // Node n1(1);
     // Node *heads = &n1;
     // Node n2(2);
@@ -40,15 +60,18 @@ int main()
 
 
     //Testing Linked List:
-    Node n1(1);
-    Node *heads = &n1;
-    Node n2(2);
-    Node n3(3);
-    Node n4(4);
-    Node n5(5);
-    n1.next = &n2;
-    n2.next = &n3;
-    n3.next = &n4;
-    n4.next = &n5;
-    print(heads);
+    // Node n1(1);
+    // Node *heads = &n1;
+    // Node n2(2);
+    // Node n3(3);
+    // Node n4(4);
+    // Node n5(5);
+    // n1.next = &n2;
+    // n2.next = &n3;
+    // n3.next = &n4;
+    // n4.next = &n5;
+    // print(heads);
+
+    Node *head = userInput();
+    print(head);
 }
